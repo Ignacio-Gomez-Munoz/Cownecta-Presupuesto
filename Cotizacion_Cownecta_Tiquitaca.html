@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cotización Tiquitaca — Cownecta</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@800&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0a0a0a;
+    --card:#141416;
+    --card2:#101012;
+    --line:#26262a;
+    --morado:#c8c2e6;
+    --azul:#bdd6ea;
+    --grad: linear-gradient(120deg, #f3c9b0 0%, #c8c2e6 45%, #bdd6ea 100%);
+    --white:#f2f2f0;
+    --grey:#9a9a9f;
+    --grey-dim:#6e6e73;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;background:var(--bg);}
+  body{
+    font-family:'DM Sans', sans-serif;
+    color:var(--white);
+    -webkit-font-smoothing:antialiased;
+  }
+  .brand{
+    font-family:'Poppins', sans-serif;
+    font-weight:800;
+    text-transform:lowercase;
+    letter-spacing:-0.02em;
+  }
+  .page{
+    max-width:1000px;
+    margin:0 auto;
+    padding:34px 40px 40px;
+  }
+
+  /* ===== HEADER ===== */
+  header{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    border-bottom:1px solid var(--line);
+    padding-bottom:18px;
+    margin-bottom:22px;
+  }
+  .brandmark{display:flex;align-items:center;gap:10px;}
+  .badge{
+    width:34px;height:34px;border-radius:50%;
+    background:var(--grad);
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Poppins',sans-serif;font-weight:800;color:#0a0a0a;font-size:14px;
+    flex-shrink:0;
+  }
+  .brandmark .name{font-size:19px;color:var(--white);}
+  .brandmark .tag{font-size:9px;letter-spacing:.18em;color:var(--grey-dim);text-transform:uppercase;margin-top:2px;}
+  .doc-tag{
+    text-align:right;
+    font-size:10px;
+    letter-spacing:.16em;
+    text-transform:uppercase;
+    color:var(--grey-dim);
+  }
+  .doc-tag strong{display:block;color:var(--azul);font-size:11px;letter-spacing:.1em;margin-top:3px;}
+
+  /* ===== HERO ===== */
+  .hero{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+    gap:24px;
+    margin-bottom:24px;
+    flex-wrap:wrap;
+  }
+  .hero h1{
+    font-family:'Poppins',sans-serif;
+    font-weight:800;
+    text-transform:lowercase;
+    font-size:46px;
+    line-height:0.95;
+    margin:0 0 6px;
+    background:var(--grad);
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+  }
+  .hero .sub{font-size:13px;color:var(--grey);max-width:420px;line-height:1.5;}
+
+  .meta{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:1px;
+    background:var(--line);
+    border:1px solid var(--line);
+    border-radius:10px;
+    overflow:hidden;
+    margin-bottom:26px;
+  }
+  .meta div{
+    background:var(--card);
+    padding:12px 16px;
+  }
+  .meta .k{font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--grey-dim);margin-bottom:4px;}
+  .meta .v{font-size:14px;font-weight:700;color:var(--white);}
+  .meta .v.accent{color:var(--azul);}
+
+  /* ===== SECTION LABEL ===== */
+  .section-label{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-size:10px;
+    letter-spacing:.16em;
+    text-transform:uppercase;
+    color:var(--grey-dim);
+    margin:0 0 12px;
+  }
+  .section-label::after{
+    content:"";
+    flex:1;
+    height:1px;
+    background:var(--line);
+  }
+
+  /* ===== MODULES ===== */
+  .modules{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+    margin-bottom:26px;
+  }
+  .module{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:12px;
+    padding:16px 18px;
+  }
+  .module .mnum{
+    font-family:'Poppins',sans-serif;
+    font-weight:800;
+    font-size:11px;
+    color:var(--morado);
+    letter-spacing:.05em;
+  }
+  .module h3{
+    font-size:15px;
+    margin:6px 0 8px;
+    color:var(--white);
+    font-weight:700;
+  }
+  .module ul{
+    margin:0;
+    padding-left:16px;
+    font-size:12.5px;
+    line-height:1.55;
+    color:#c9c9cc;
+  }
+  .module ul li{margin-bottom:5px;}
+  .module ul li:last-child{margin-bottom:0;}
+  .module .note{
+    display:block;
+    margin-top:8px;
+    font-size:11px;
+    color:var(--grey-dim);
+    font-style:italic;
+  }
+
+  /* ===== CRONOGRAMA ===== */
+  .cronograma{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:12px;
+    padding:18px 20px;
+    margin-bottom:26px;
+  }
+  .cronograma .headline{
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    margin-bottom:14px;
+    flex-wrap:wrap;
+    gap:6px;
+  }
+  .cronograma .headline .total{
+    font-family:'Poppins',sans-serif;
+    font-weight:800;
+    font-size:16px;
+    color:var(--azul);
+    text-transform:lowercase;
+  }
+  .cronograma .headline .disclaimer{
+    font-size:11px;
+    color:var(--grey-dim);
+    max-width:560px;
+    line-height:1.5;
+  }
+  .timeline{
+    display:flex;
+    flex-direction:column;
+  }
+  .tstep{
+    display:grid;
+    grid-template-columns:78px 16px 1fr;
+    align-items:start;
+    gap:0;
+    position:relative;
+    padding-bottom:12px;
+  }
+  .tstep:last-child{padding-bottom:0;}
+  .tstep .week{
+    font-size:10.5px;
+    font-weight:700;
+    color:var(--morado);
+    letter-spacing:.02em;
+    padding-top:1px;
+  }
+  .tstep .dotcol{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    height:100%;
+  }
+  .tstep .dot{
+    width:7px;height:7px;border-radius:50%;
+    background:var(--azul);
+    margin-top:4px;
+    flex-shrink:0;
+  }
+  .tstep .connector{
+    width:1px;
+    flex:1;
+    background:var(--line);
+    margin-top:2px;
+  }
+  .tstep:last-child .connector{display:none;}
+  .tstep .desc{
+    font-size:12.5px;
+    color:#c9c9cc;
+    line-height:1.4;
+    padding-left:12px;
+  }
+  .tstep .desc .paren{color:var(--grey-dim);font-size:11px;}
+
+  /* ===== INVESTMENT ===== */
+  .invest{
+    display:grid;
+    grid-template-columns: 1.1fr 1.4fr;
+    gap:12px;
+    margin-bottom:26px;
+  }
+  .invest-card{
+    background:var(--grad);
+    border-radius:12px;
+    padding:20px;
+    color:#111;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+  }
+  .invest-card .plan{
+    font-size:10px;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:#2c2c2c;
+    margin-bottom:4px;
+  }
+  .invest-card .amount{
+    font-family:'Poppins',sans-serif;
+    font-weight:800;
+    font-size:32px;
+    line-height:1;
+    text-transform:lowercase;
+  }
+  .invest-card .amount span{font-size:14px;font-weight:700;}
+  .payment-terms{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:12px;
+    padding:16px 18px;
+  }
+  .payment-terms ul{
+    margin:0;
+    padding-left:16px;
+    font-size:12.5px;
+    line-height:1.6;
+    color:#c9c9cc;
+  }
+  .payment-terms ul li{margin-bottom:6px;}
+  .payment-terms ul li:last-child{margin-bottom:0;}
+  .payment-terms b{color:var(--white);}
+
+  /* ===== CONDICIONES ===== */
+  .conditions{
+    background:var(--card2);
+    border:1px solid var(--line);
+    border-radius:12px;
+    padding:16px 18px;
+    margin-bottom:26px;
+  }
+  .conditions ul{
+    margin:0;
+    padding-left:16px;
+    columns:2;
+    -webkit-columns:2;
+    column-gap:24px;
+    font-size:12px;
+    line-height:1.6;
+    color:#c9c9cc;
+  }
+  .conditions ul li{margin-bottom:8px;break-inside:avoid;}
+
+  /* ===== FOOTER ===== */
+  footer{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    border-top:1px solid var(--line);
+    padding-top:16px;
+    margin-top:6px;
+  }
+  footer .fbrand{
+    font-family:'Poppins',sans-serif;
+    font-weight:800;
+    text-transform:lowercase;
+    font-size:13px;
+    color:var(--white);
+  }
+  footer .ftag{
+    font-size:9px;
+    letter-spacing:.16em;
+    text-transform:uppercase;
+    color:var(--grey-dim);
+  }
+
+  @media print{
+    body{background:#0a0a0a;}
+    .page{padding:20px 28px;}
+  }
+
+  @media (max-width:680px){
+    .page{padding:24px 18px;}
+    .meta{grid-template-columns:1fr 1fr;}
+    .modules{grid-template-columns:1fr;}
+    .invest{grid-template-columns:1fr;}
+    .conditions ul{columns:1;}
+    .hero h1{font-size:34px;}
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <header>
+    <div class="brandmark">
+      <div class="badge">tt.</div>
+      <div>
+        <div class="brand name">tiquitaca</div>
+        <div class="tag">ideas que funcionan</div>
+      </div>
+    </div>
+    <div class="doc-tag">
+      Documento comercial
+      <strong>Cotización de servicios</strong>
+    </div>
+  </header>
+
+  <div class="hero">
+    <div>
+      <h1>cownecta</h1>
+      <div class="sub">Propuesta de trabajo — Plan Premium, Escalamiento Total. Estrategia de marca, validación comercial, toolkit B2B y resguardo legal en un solo proceso.</div>
+    </div>
+  </div>
+
+  <div class="meta">
+    <div>
+      <div class="k">Cliente</div>
+      <div class="v">Cownecta</div>
+    </div>
+    <div>
+      <div class="k">Contacto</div>
+      <div class="v">Marcos Fernández</div>
+    </div>
+    <div>
+      <div class="k">Plan elegido</div>
+      <div class="v accent">Premium — Escalamiento Total</div>
+    </div>
+    <div>
+      <div class="k">Fecha de elaboración</div>
+      <div class="v">02 julio 2026</div>
+    </div>
+  </div>
+
+  <div class="section-label">Alcance del proyecto</div>
+  <div class="modules">
+    <div class="module">
+      <span class="mnum">MÓDULO 1</span>
+      <h3>Terapia y claridad de marca</h3>
+      <ul>
+        <li>Definición de propósito, valores y relato comercial (Pitch) de Cownecta.</li>
+        <li>Diseño del Sistema de Identidad Visual: logotipo, paleta de colores, tipografías.</li>
+        <li>Entrega de Manual de Marca.</li>
+      </ul>
+    </div>
+    <div class="module">
+      <span class="mnum">MÓDULO 2</span>
+      <h3>Investigación y validación comercial</h3>
+      <ul>
+        <li>Diseño y ejecución de estudio de mercado (metodología cuantitativa y cualitativa).</li>
+        <li>Levantamiento de perfil sociodemográfico del cliente, medición de intención de compra y análisis de disposición de pago.</li>
+        <li>Informe final de validación comercial.</li>
+      </ul>
+      <span class="note">Muestra incluida: hasta 25 predios encuestados (metodología telefónica / visita a terreno).</span>
+    </div>
+    <div class="module">
+      <span class="mnum">MÓDULO 3</span>
+      <h3>Toolkit comercial B2B (offline y online)</h3>
+      <ul>
+        <li><b>Offline:</b> diseño de tarjetas de presentación, carpetas y brochure comercial para uso en terreno y ferias.</li>
+        <li><b>Online:</b> diseño de landing page de Cownecta e implementación de sistema Inbound Marketing.</li>
+      </ul>
+    </div>
+    <div class="module">
+      <span class="mnum">MÓDULO 4</span>
+      <h3>Resguardo estratégico (blindaje INAPI)</h3>
+      <ul>
+        <li>Diagnóstico de factibilidad legal de las marcas CentralCow y Cownecta.</li>
+        <li>Ingreso preventivo de la solicitud de registro ante INAPI, en coordinación con Estudio Jurídico Gómez Rojas.</li>
+      </ul>
+      <span class="note">Inversión aproximada adicional: $350.000.- neto, coordinada directamente con el estudio.</span>
+    </div>
+  </div>
+
+  <div class="cronograma">
+    <div class="headline">
+      <div class="total">Cronograma estimado — 6 a 8 semanas desde kickoff</div>
+      <div class="disclaimer">Corre desde el kickoff confirmado, una vez formalizada la empresa y firmado el acuerdo de trabajo. Los módulos 2 y 4 dependen parcialmente de tiempos de terceros.</div>
+    </div>
+    <div class="timeline">
+      <div class="tstep">
+        <div class="week">Semana 0</div>
+        <div class="dotcol"><div class="dot"></div><div class="connector"></div></div>
+        <div class="desc">Kickoff y recepción de materiales <span class="paren">(Inicio + 2 días hábiles)</span></div>
+      </div>
+      <div class="tstep">
+        <div class="week">Semana 0–1</div>
+        <div class="dotcol"><div class="dot"></div><div class="connector"></div></div>
+        <div class="desc">Moodboard y dirección creativa <span class="paren">(Kickoff + 5 días hábiles)</span></div>
+      </div>
+      <div class="tstep">
+        <div class="week">Semana 0–1</div>
+        <div class="dotcol"><div class="dot"></div><div class="connector"></div></div>
+        <div class="desc">Inicio diagnóstico INAPI y diseño de instrumento de investigación <span class="paren">(en paralelo)</span></div>
+      </div>
+      <div class="tstep">
+        <div class="week">Semana 1–2</div>
+        <div class="dotcol"><div class="dot"></div><div class="connector"></div></div>
+        <div class="desc">Propuesta de identidad visual — 1ª ronda <span class="paren">(Kickoff + 12 días hábiles)</span></div>
+      </div>
+      <div class="tstep">
+        <div class="week">Semana 2</div>
+        <div class="dotcol"><div class="dot"></div><div class="connector"></div></div>
+        <div class="desc">Ejecución de encuestas e ingreso de solicitud INAPI <span class="paren">(en paralelo)</span></div>
+      </div>
+      <div class="tstep">
+        <div class="week">Semana 2</div>
+        <div class="dotcol"><div class="dot"></div><div class="connector"></div></div>
+        <div class="desc">Feedback cliente — ronda 1 <span class="paren">(Entrega + 3 días hábiles)</span></div>
+      </div>
+      <div class="tstep">
+        <div class="week">Semana 2–3</div>
+        <div class="dotcol"><div class="dot"></div><div class="connector"></div></div>
+        <div class="desc">Entrega refinada — 2ª ronda <span class="paren">(Feedback + 5 días hábiles)</span></div>
+      </div>
+      <div class="tstep">
+        <div class="week">Semana 3</div>
+        <div class="dotcol"><div class="dot"></div><div class="connector"></div></div>
+        <div class="desc">Aprobación final de identidad <span class="paren">(2ª ronda + 3 días hábiles)</span></div>
+      </div>
+      <div class="tstep">
+        <div class="week">Semana 3–4</div>
+        <div class="dotcol"><div class="dot"></div><div class="connector"></div></div>
+        <div class="desc">Producción Toolkit Comercial: tarjetas, brochure, carpeta, landing page e Inbound Marketing <span class="paren">(en paralelo a aprobación)</span></div>
+      </div>
+      <div class="tstep">
+        <div class="week">Semana 4–5</div>
+        <div class="dotcol"><div class="dot"></div></div>
+        <div class="desc">Revisión y entrega final Toolkit + Manual de Marca + Informe de validación comercial</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-label">Inversión y forma de pago</div>
+  <div class="invest">
+    <div class="invest-card">
+      <div class="plan">Plan Premium — Escalamiento Total</div>
+      <div class="amount">$1.650.000<span>.- neto</span></div>
+    </div>
+    <div class="payment-terms">
+      <ul>
+        <li><b>50% anticipo + IVA</b> al confirmar la propuesta y activar el proyecto.</li>
+        <li><b>50% contra entrega + IVA</b> al entregar los archivos finales de cada módulo.</li>
+        <li>Facilidades de pago con tarjeta de crédito disponibles (considera un cargo adicional por uso de plataforma).</li>
+        <li>Flexibilidad de facturación: emitimos boleta o factura según lo que exijan las bases de tu entidad patrocinadora.</li>
+        <li>Para iniciar se requiere firma del acuerdo de trabajo.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="section-label">Condiciones de trabajo</div>
+  <div class="conditions">
+    <ul>
+      <li>Reunión de kickoff obligatoria al inicio del proyecto para alinear criterios antes de ejecutar.</li>
+      <li>La contraparte tiene 3 días hábiles para revisar cada entregable. Si se extiende ese plazo, la agencia no se hace responsable de atrasos en hitos siguientes.</li>
+      <li>2 rondas de revisión incluidas. La tercera ronda tiene un costo de $50.000 + IVA.</li>
+      <li>Punto de contacto único: Tiquitaca trabaja directamente con Marcos Fernández o la persona que se designe.</li>
+      <li>Archivos de marca entregados en: editable, JPG, PNG y PDF.</li>
+    </ul>
+  </div>
+
+  <footer>
+    <div class="fbrand">tiquitaca</div>
+    <div class="ftag">ideas que funcionan</div>
+  </footer>
+
+</div>
+</body>
+</html>
